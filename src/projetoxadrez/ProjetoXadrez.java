@@ -1,7 +1,8 @@
 
 package projetoxadrez;
 
-import BoardGame.Position;
+import BoardGame.Board;
+
 
 
 public class ProjetoXadrez {
@@ -9,8 +10,7 @@ public class ProjetoXadrez {
 
     public static void main(String[] args) {
         
-        Position pos = new Position(3,5);
-        System.out.println(pos);
+        Board board = new Board(8,8);
     }
     
 }
