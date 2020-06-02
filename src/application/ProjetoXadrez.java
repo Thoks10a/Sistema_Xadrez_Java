@@ -2,9 +2,11 @@
 package application;
 
 import BoardGame.Board;
+import ProjetoXadrez.ChessException;
 import ProjetoXadrez.ChessMatch;
 import ProjetoXadrez.ChessPiece;
 import ProjetoXadrez.ChessPosition;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -17,6 +19,8 @@ public class ProjetoXadrez {
        ChessMatch chessMatch = new ChessMatch();
        
        while(true){
+           try{
+           UI.clearScreen();
            UI.printBoard(chessMatch.getPieces());
            System.out.println();
            System.out.println("Source: ");
@@ -25,6 +29,15 @@ public class ProjetoXadrez {
            System.out.println("Target: ");
            ChessPosition target = UI.readChessPosition(sc);
            ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
+           }
+           catch(ChessException e){
+               System.out.println(e.getMessage());
+               sc.nextLine();
+           }
+           catch(InputMismatchException e){
+               System.out.println(e.getMessage());
+               sc.nextLine();
+           }
        }
        }
     }
